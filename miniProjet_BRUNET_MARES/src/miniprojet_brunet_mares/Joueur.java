@@ -17,11 +17,14 @@ public class Joueur {
     
     // Méthodes
     public Joueur(String nom, String couleur){
+        
         Nom = nom;
         Couleur = couleur;
+        
     }
     
     public void affecterCouleur(String Couleur){
+        
         this.Couleur = Couleur;
         //On utilise this car le nom de la variable globale (Couleur)
         // est le même que celui de la variable en argument de la méthode

@@ -8,6 +8,11 @@ package miniprojet_brunet_mares;
  *
  * @author egnma
  */
-public class Grille {
+
+public class Plateau {
+    
+    
+     
+    
     
 }
