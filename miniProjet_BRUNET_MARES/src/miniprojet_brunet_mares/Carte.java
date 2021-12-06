@@ -20,6 +20,9 @@ public class Carte {
     }
     
     
+    
+    
+    
     public boolean deplacementAutorisePourCarte(int ligneDepart, int colonneDepart){
         
         
