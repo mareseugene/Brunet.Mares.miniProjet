@@ -13,7 +13,11 @@ public class Carte {
     String Nom;
     int [] vecteurDeplacement = new int[2];
     
-    
+    public Carte(String Nom,int [] vecteurDeplacement){
+        String nom = Nom;
+        int [] VecteurDeplacement = vecteurDeplacement;
+       
+    }
     
     
     public boolean deplacementAutorisePourCarte(int ligneDepart, int colonneDepart){
