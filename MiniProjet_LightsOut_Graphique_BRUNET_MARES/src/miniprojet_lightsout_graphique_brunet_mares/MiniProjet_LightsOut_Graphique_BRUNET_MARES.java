@@ -4,17 +4,23 @@
  */
 package miniprojet_lightsout_graphique_brunet_mares;
 
+import java.awt.Dimension;
+import java.awt.Image;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Utilisateur
  */
 public class MiniProjet_LightsOut_Graphique_BRUNET_MARES {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+   
+        
+        
+        
+        
     }
-    
-}
+
