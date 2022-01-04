@@ -13,10 +13,21 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     /**
      * Creates new form FenetreDeJeu
      */
+    Grille grilleJeu = new Grille();
+    Joueur joueurCourant;
+    
     public FenetreDeJeu() {
         initComponents();
         panneauChronometre.setVisible(false);
         PanneauInfosJoueur.setVisible(false);
+        
+        for(int i=5; i>=0 ; i++){
+            for(int j=5; j<5 ; j++){
+                CelluleGraphique cellGraph = new CelluleGraphique();
+                panneau_grille.add(cellGraph);
+                
+            }
+        }
     }
 
     /**
@@ -28,7 +39,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Grille = new javax.swing.JPanel();
+        panneau_grille = new javax.swing.JPanel();
         panneauChronometre = new javax.swing.JPanel();
         PanneauInfosJoueur = new javax.swing.JPanel();
         NbCoupsJoues = new javax.swing.JLabel();
@@ -45,15 +56,15 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Grille.setBackground(new java.awt.Color(204, 255, 255));
-        Grille.setLayout(new java.awt.GridLayout(5, 5));
-        getContentPane().add(Grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 800, 800));
+        panneau_grille.setBackground(new java.awt.Color(255, 102, 102));
+        panneau_grille.setLayout(new java.awt.GridLayout(5, 5));
+        getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 800, 800));
 
-        panneauChronometre.setBackground(new java.awt.Color(204, 204, 204));
+        panneauChronometre.setBackground(new java.awt.Color(153, 153, 153));
         panneauChronometre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(panneauChronometre, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 530, 420, 270));
 
-        PanneauInfosJoueur.setBackground(new java.awt.Color(153, 153, 0));
+        PanneauInfosJoueur.setBackground(new java.awt.Color(204, 204, 204));
         PanneauInfosJoueur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NbCoupsJoues.setFont(new java.awt.Font("Calibri Light", 0, 16)); // NOI18N
@@ -75,7 +86,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         getContentPane().add(PanneauInfosJoueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 420, 220));
 
-        panneauInitialisationPartie.setBackground(new java.awt.Color(204, 204, 255));
+        panneauInitialisationPartie.setBackground(new java.awt.Color(204, 204, 204));
         panneauInitialisationPartie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nom_Joueur.setText("NUMERO DE CARTE BANCAIRE :");
@@ -162,7 +173,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Grille;
     private javax.swing.JLabel InfosDuJoueur;
     private javax.swing.JLabel NbCasesRestantes;
     private javax.swing.JLabel NbCoupsJoues;
@@ -175,5 +185,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JLabel numero_CarteBancaire;
     private javax.swing.JPanel panneauChronometre;
     private javax.swing.JPanel panneauInitialisationPartie;
+    private javax.swing.JPanel panneau_grille;
     // End of variables declaration//GEN-END:variables
 }
