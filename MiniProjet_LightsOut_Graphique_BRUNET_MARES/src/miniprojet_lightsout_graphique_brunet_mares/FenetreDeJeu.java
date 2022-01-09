@@ -4,6 +4,9 @@
  */
 package miniprojet_lightsout_graphique_brunet_mares;
 
+import java.awt.event.ActionEvent;
+import java.util.Random;
+
 /**
  *
  * @author egnma
@@ -20,16 +23,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         initComponents();
         panneauChronometre.setVisible(false);
         PanneauInfosJoueur.setVisible(false);
-        
-        for(int i=5; i>=0 ; i++){
-            for(int j=5; j<5 ; j++){
-                CelluleGraphique cellGraph = new CelluleGraphique();
+  
+        for(int i=4; i>=0 ; i--){
+            for(int j=0; j<5 ; j++){
+                CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.tableauDeJeu[i][j]);
+
                 panneau_grille.add(cellGraph);
                 
             }
         }
+   
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +51,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         InfosDuJoueur = new javax.swing.JLabel();
         Nom = new javax.swing.JLabel();
         NbCasesRestantes = new javax.swing.JLabel();
+        nom_label = new javax.swing.JLabel();
+        CB_infos = new javax.swing.JLabel();
+        CB_label = new javax.swing.JLabel();
+        NbCases_label = new javax.swing.JLabel();
+        NbCoupsJoues_label = new javax.swing.JLabel();
         panneauInitialisationPartie = new javax.swing.JPanel();
         nom_Joueur = new javax.swing.JLabel();
         NomJoueur = new javax.swing.JTextField();
@@ -58,7 +68,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         panneau_grille.setBackground(new java.awt.Color(255, 102, 102));
         panneau_grille.setLayout(new java.awt.GridLayout(5, 5));
-        getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 800, 800));
+        getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 800, 800));
 
         panneauChronometre.setBackground(new java.awt.Color(153, 153, 153));
         panneauChronometre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,19 +88,35 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         Nom.setFont(new java.awt.Font("Calibri Light", 0, 16)); // NOI18N
         Nom.setText("Nom :");
-        PanneauInfosJoueur.add(Nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 40, 30));
+        PanneauInfosJoueur.add(Nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 40, 30));
 
         NbCasesRestantes.setFont(new java.awt.Font("Calibri Light", 0, 16)); // NOI18N
         NbCasesRestantes.setText("Nombre cases restantes :");
         PanneauInfosJoueur.add(NbCasesRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 160, 30));
 
-        getContentPane().add(PanneauInfosJoueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 420, 220));
+        nom_label.setText("Nom joueur ");
+        PanneauInfosJoueur.add(nom_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 180, 20));
+
+        CB_infos.setFont(new java.awt.Font("Calibri Light", 0, 16)); // NOI18N
+        CB_infos.setText("Nom :");
+        PanneauInfosJoueur.add(CB_infos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 40, 30));
+
+        CB_label.setText("Infos bancaires");
+        PanneauInfosJoueur.add(CB_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 84, 210, 20));
+
+        NbCases_label.setText("jLabel1");
+        PanneauInfosJoueur.add(NbCases_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 114, 150, 30));
+
+        NbCoupsJoues_label.setText("jLabel1");
+        PanneauInfosJoueur.add(NbCoupsJoues_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 140, 30));
+
+        getContentPane().add(PanneauInfosJoueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 290, 420, 220));
 
         panneauInitialisationPartie.setBackground(new java.awt.Color(204, 204, 204));
         panneauInitialisationPartie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nom_Joueur.setText("NUMERO DE CARTE BANCAIRE :");
-        panneauInitialisationPartie.add(nom_Joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 170, 30));
+        panneauInitialisationPartie.add(nom_Joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 190, 30));
 
         NomJoueur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +136,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneauInitialisationPartie.add(debuterPartie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 230, 40));
 
         numero_CarteBancaire.setText("NOM DU JOUEUR :");
-        panneauInitialisationPartie.add(numero_CarteBancaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 30));
+        panneauInitialisationPartie.add(numero_CarteBancaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 120, 30));
 
         numeroJoueur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +145,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
         panneauInitialisationPartie.add(numeroJoueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 170, 30));
 
-        getContentPane().add(panneauInitialisationPartie, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 420, 140));
+        getContentPane().add(panneauInitialisationPartie, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, 420, 140));
 
         setBounds(0, 0, 1436, 910);
     }// </editor-fold>//GEN-END:initComponents
@@ -135,6 +161,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void debuterPartieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_debuterPartieActionPerformed
         panneauChronometre.setVisible(true);
         PanneauInfosJoueur.setVisible(true);
+        initialiserPartie();
+        panneau_grille.repaint();
+        debuterPartie.setEnabled(false);
     }//GEN-LAST:event_debuterPartieActionPerformed
 
     /**
@@ -171,16 +200,46 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             }
         });
     }
-
+    
+        public void initialiserPartie(){
+            int nombreCoupsJoues = 0 ;
+            Random rand = new Random();
+            String nomJoueur1 = numeroJoueur.getText();
+            nom_label.setText(nomJoueur1);
+            CB_label.setText("Transaction 100$ validée");
+            NbCases_label.setText(nombreCoupsJoues+"");
+            for (int i = 0 ; i < 25 ; i++){
+            
+                Light lumiere = new Light();
+            
+        }
+    
+        
+            for (int i = 0 ; i < 7 ; i++){
+            
+                int ligneStart = rand.nextInt(5);
+                int colonneStart = rand.nextInt(5);
+            
+                grilleJeu.switchOnOff(ligneStart,colonneStart);
+            
+        }
+        }
+        
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CB_infos;
+    private javax.swing.JLabel CB_label;
     private javax.swing.JLabel InfosDuJoueur;
     private javax.swing.JLabel NbCasesRestantes;
+    private javax.swing.JLabel NbCases_label;
     private javax.swing.JLabel NbCoupsJoues;
+    private javax.swing.JLabel NbCoupsJoues_label;
     private javax.swing.JLabel Nom;
     private javax.swing.JTextField NomJoueur;
     private javax.swing.JPanel PanneauInfosJoueur;
     private javax.swing.JButton debuterPartie;
     private javax.swing.JLabel nom_Joueur;
+    private javax.swing.JLabel nom_label;
     private javax.swing.JTextField numeroJoueur;
     private javax.swing.JLabel numero_CarteBancaire;
     private javax.swing.JPanel panneauChronometre;
